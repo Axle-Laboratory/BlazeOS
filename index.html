@@ -28,14 +28,14 @@
     .navbar {
       position: fixed;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       background: var(--bar-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 24px;
-      width: 90%;
       max-width: 720px;
       border-radius: 24px 24px 0 0;
       box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
@@ -46,7 +46,6 @@
       position: sticky;
       top: 0;
       bottom: auto;
-      transform: none;
       border-radius: 0 0 24px 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
@@ -87,7 +86,6 @@
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       cursor: pointer;
-      animation: fadeIn 1s ease-out;
     }
     .shortcut + .shortcut {
       top: 140px;
@@ -123,6 +121,17 @@
     .file-list a {
       text-decoration: none;
       color: #0078d7;
+    }
+
+    .cursor {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: black;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      transition: top 0.5s ease, left 0.5s ease;
     }
 
     /* Edition Sections */
@@ -174,8 +183,9 @@
 
   <!-- Hero Section -->
   <div class="hero" id="home">
-    <div class="shortcut" onclick="openEditor()">📝 Text Editor</div>
-    <div class="shortcut" onclick="openExplorer()">📁 File Explorer</div>
+    <div class="shortcut" id="shortcut-editor">📝 Text Editor</div>
+    <div class="shortcut" id="shortcut-explorer">📁 File Explorer</div>
+    <div class="cursor" id="cursor"></div>
 
     <div class="window text-editor" id="editor">
       <h3>Text Editor</h3>
@@ -232,7 +242,8 @@
   <section class="edition-section" id="blaze-proplus">
     <img src="Blaze26, version logo (PRO+).png" alt="Blaze PRO+" />
     <h2>Blaze PRO+</h2>
-        <p class="description">With PRO+, you get added features on top of PRO, including the Plus Desktop, Advanced PRO management, Device Locking and Built-In Auth. All this and more allows you to control and run business devices deep into the future!</p>
+    <p class="launch">Launch: 15 Mar 2026</p>
+    <p class="description">With PRO+, you get added features on top of PRO, including the Plus Desktop, Advanced PRO management, Device Locking and Built-In Auth. All this and more allows you to control and run business devices deep into the future!</p>
   </section>
 
   <section class="edition-section" id="download">
@@ -256,7 +267,18 @@
       }
     });
 
-    // App launch simulation
+    // Cursor simulation
+    const cursor = document.getElementById('cursor');
+    const editorShortcut = document.getElementById('shortcut-editor');
+    const explorerShortcut = document.getElementById('shortcut-explorer');
+
+    function moveCursorTo(element, callback) {
+      const rect = element.getBoundingClientRect();
+      cursor.style.top = rect.top + window.scrollY + 10 + 'px';
+      cursor.style.left = rect.left + window.scrollX + 10 + 'px';
+      setTimeout(callback, 600);
+    }
+
     function openEditor() {
       const editor = document.getElementById('editor');
       editor.style.display = 'block';
@@ -275,6 +297,16 @@
       const explorer = document.getElementById('explorer');
       explorer.style.display = 'block';
     }
+
+    // Sequence animation
+    window.addEventListener('load', () => {
+      moveCursorTo(editorShortcut, () => {
+        editorShortcut.click();
+        moveCursorTo(explorerShortcut, () => {
+          explorerShortcut.click();
+        });
+      });
+    });
   </script>
 </body>
 </html>
