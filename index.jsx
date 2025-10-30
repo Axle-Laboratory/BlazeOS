@@ -6,7 +6,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="h-screen flex flex-col items-center justify-center text-center px-6">
         <motion.img
-          src="/assets/blaze26-logo.png"
+          src="./blaze26-logo.png"
           alt="BlazeOS Logo"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -35,17 +35,17 @@ export default function Home() {
           transition={{ delay: 1.5 }}
           className="mt-8 flex gap-4"
         >
-          <a href="/download" className="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">
+          <a href="#download" className="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">
             Download Blaze
           </a>
-          <a href="/editions" className="px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition">
+          <a href="#editions" className="px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition">
             Explore Editions
           </a>
         </motion.div>
       </section>
 
       {/* Editions Section */}
-      <section className="py-24 px-6 bg-gradient-to-b from-white to-gray-100">
+      <section id="editions" className="py-24 px-6 bg-gradient-to-b from-white to-gray-100">
         <h2 className="text-4xl font-bold text-center mb-12">BlazeOS Editions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {[
@@ -61,7 +61,7 @@ export default function Home() {
               transition={{ delay: i * 0.2 }}
               className="bg-white rounded-xl shadow-lg p-6"
             >
-              <img src={`/assets/${edition.logo}`} alt={edition.name} className="h-20 mx-auto mb-4" />
+              <img src={`./${edition.logo}`} alt={edition.name} className="h-20 mx-auto mb-4" />
               <h3 className="text-xl font-semibold">{edition.name}</h3>
               <p className="text-gray-500 mt-2">Launch: {edition.date}</p>
             </motion.div>
