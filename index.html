@@ -5,10 +5,11 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom right, #111, #222);
       font-family: sans-serif;
       color: white;
       padding: 20px;
+      background: url('https://yourdomain.com/background.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
 
     #mode-indicator {
@@ -34,8 +35,34 @@
       transform: scale(1.1);
     }
 
-    #jingle-selector, #timetable {
+    #timetable {
       margin-bottom: 20px;
+    }
+
+    #taskbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 10px;
+      font-size: 0.9em;
+    }
+
+    .taskbar-button {
+      background: #333;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .taskbar-button:hover {
+      background: #555;
     }
   </style>
 </head>
@@ -48,27 +75,20 @@
     <div class="color-pad" data-color="#33ff33"></div>
   </div>
 
-  <div id="jingle-selector">
-    <select id="jingle-list">
-      <option value="https://yourdomain.com/jingle1.mp3">Startup Jingle</option>
-      <option value="https://yourdomain.com/jingle2.mp3">Victory Sound</option>
-    </select>
-    <button onclick="playJingle()">Play</button>
-  </div>
-
   <div id="timetable">
     <input type="time" id="start-time">
     <input type="time" id="end-time">
     <button onclick="scheduleTask()">Schedule</button>
   </div>
 
-  <script>
-    function playJingle() {
-      const jingle = document.getElementById('jingle-list').value;
-      const audio = new Audio(jingle);
-      audio.play();
-    }
+  <div id="taskbar">
+    <button class="taskbar-button">Launcher</button>
+    <button class="taskbar-button">Settings</button>
+    <button class="taskbar-button">Files</button>
+    <span style="margin-left:auto;">BlazeOS 26</span>
+  </div>
 
+  <script>
     function scheduleTask() {
       const start = document.getElementById('start-time').value;
       const end = document.getElementById('end-time').value;
