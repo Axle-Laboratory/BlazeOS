@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* Navbar / Taskbar */
+    /* Taskbar Navbar */
     .navbar {
       position: fixed;
       bottom: 0;
@@ -100,7 +100,6 @@
       position: absolute;
       width: 300px;
       display: none;
-      animation: fadeUp 1s ease-out forwards;
     }
     .text-editor {
       top: 220px;
@@ -125,40 +124,10 @@
       text-decoration: none;
       color: #0078d7;
     }
-    .cursor {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      background: black;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 999;
-      animation: moveCursor 6s ease-in-out forwards;
-    }
-
-    @keyframes moveCursor {
-      0% { top: 0; left: 0; opacity: 0; }
-      10% { top: 70px; left: 70px; opacity: 1; }
-      20% { top: 70px; left: 70px; }
-      30% { top: 230px; left: 70px; }
-      40% { top: 230px; left: 70px; }
-      50% { top: 230px; left: 410px; }
-      60% { top: 230px; left: 410px; }
-      100% { top: 230px; left: 410px; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     /* Edition Sections */
     .edition-section {
-      height: 500vh;
+      height: 100vh;
       padding: 100px 20px;
       text-align: center;
       background: white;
@@ -194,6 +163,11 @@
       font-size: 0.9rem;
       color: #888;
     }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -202,7 +176,6 @@
   <div class="hero" id="home">
     <div class="shortcut" onclick="openEditor()">📝 Text Editor</div>
     <div class="shortcut" onclick="openExplorer()">📁 File Explorer</div>
-    <div class="cursor"></div>
 
     <div class="window text-editor" id="editor">
       <h3>Text Editor</h3>
@@ -259,12 +232,12 @@
   <section class="edition-section" id="blaze-proplus">
     <img src="Blaze26, version logo (PRO+).png" alt="Blaze PRO+" />
     <h2>Blaze PRO+</h2>
-    <p class="launch">Launch: 15 Mar 2026</p>
-    <p class="description">With PRO+, you get added features on top of PRO, including the Plus Desktop, Advanced PRO management, Device Locking and Built-In Auth. All this and more allows you to control and run business devices deep into the future!</p>
+        <p class="description">With PRO+, you get added features on top of PRO, including the Plus Desktop, Advanced PRO management, Device Locking and Built-In Auth. All this and more allows you to control and run business devices deep into the future!</p>
   </section>
 
   <section class="edition-section" id="download">
     <h2>Download Blaze</h2>
+    <p class="launch">Available Now</p>
     <p class="description">Blaze is free, so all you have to do is install the Get Blaze app from Axle, then follow the on-screen steps!</p>
   </section>
 
