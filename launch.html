@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BlazeOS 26 — Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .logo {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: zoomIn 1.5s ease-out;
+    }
+
+    .headline {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      animation: slideUp 1.5s ease-out;
+    }
+
+    .button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: #ff3c00;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      border-radius: 24px 24px 0 0;
+      backdrop-filter: blur(10px);
+      animation: fadeUp 2s ease-out;
+    }
+
+    .nav-icon {
+      font-size: 1.5rem;
+      color: #fff;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .nav-icon:hover {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🔥 BlazeOS 26</div>
+    <div class="headline">Coming Soon — Launching Jan 1, 2026</div>
+    <button class="button">Notify Me</button>
+  </div>
+
+  <div class="navbar">
+    <div class="nav-icon">🏠</div>
+    <div class="nav-icon">🔥</div>
+    <div class="nav-icon">💼</div>
+    <div class="nav-icon">⬇️</div>
+  </div>
+</body>
+</html>
