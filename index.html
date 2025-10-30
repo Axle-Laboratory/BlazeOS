@@ -5,39 +5,57 @@
   <title>BlazeOS 26</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
+    :root {
+      --icon-color: #333;
+      --bar-bg: #ffffff;
+      --hover-bg: #ddd;
+      --active-bg: #cce5ff;
+    }
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: white;
       color: #111;
       overflow-x: hidden;
     }
 
-    /* Navbar */
+    /* Navbar styled like BlazeOS taskbar */
     .navbar {
       position: sticky;
       top: 0;
-      background: white;
-      border-bottom: 1px solid #eee;
+      background: var(--bar-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 24px;
       z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 0 0 24px 24px;
     }
-    .navbar .logo {
-      font-weight: bold;
-      font-size: 1.2rem;
+    .nav-dock, .nav-system {
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
-    .navbar nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #111;
-      font-weight: 500;
-      transition: color 0.3s ease;
+    .nav-icon {
+      width: 40px;
+      height: 40px;
+      background: #eee;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--icon-color);
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .navbar nav a:hover {
-      color: #ff3c78;
+    .nav-icon:hover {
+      background: var(--hover-bg);
     }
 
     .hero {
@@ -153,20 +171,24 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <div class="logo">BlazeOS</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#editions">Editions</a>
-      <a href="#download">Download</a>
-      <a href="#docs">Docs</a>
-    </nav>
+    <div class="nav-dock">
+      <div class="nav-icon" onclick="location.href='#home'" title="Home">🏠</div>
+      <div class="nav-icon" onclick="location.href='#editions'" title="Editions">📦</div>
+      <div class="nav-icon" onclick="location.href='#download'" title="Download">⬇️</div>
+      <div class="nav-icon" onclick="location.href='#docs'" title="Docs">📖</div>
+    </div>
+    <div class="nav-system">
+      <div class="nav-icon" title="Wi-Fi">📶</div>
+      <div class="nav-icon" title="Battery">🔋</div>
+      <div class="nav-icon" title="Clock">🕒</div>
+    </div>
   </div>
 
   <!-- Hero Section -->
   <div class="hero" id="home">
     <img src="Blaze26 version logo.png" alt="BlazeOS Logo" />
     <h1>Modular. Visual. Unstoppable.</h1>
-    <p>Flame UI Scripting powers the future of device-hosted UX.</p>
+    <p>BlazeOS 26 redefines desktop experience with bold design and instant adaptability.</p>
     <div class="buttons">
       <a href="#download" class="primary">Download Blaze</a>
       <a href="#editions" class="secondary">Explore Editions</a>
@@ -205,7 +227,7 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 BlazeOS. Built with Flame UI Scripting.
+    © 2025 BlazeOS. Modular by design. Built to move.
   </footer>
 
 </body>
