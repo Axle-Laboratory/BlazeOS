@@ -21,9 +21,10 @@
       background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
       background-size: cover;
       color: #111;
+      overflow-x: hidden;
     }
 
-    /* Sticky Navbar */
+    /* Navbar / Taskbar */
     .navbar {
       position: fixed;
       bottom: 0;
@@ -71,11 +72,25 @@
       background: var(--hover-bg);
     }
 
-    /* Desktop Hero */
+    /* Hero Desktop */
     .hero {
       height: 100vh;
       position: relative;
       padding: 40px;
+    }
+    .shortcut {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      background: #fff;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      animation: fadeIn 1s ease-out;
+    }
+    .shortcut + .shortcut {
+      top: 140px;
     }
     .window {
       background: #fff;
@@ -84,13 +99,15 @@
       padding: 16px;
       position: absolute;
       width: 300px;
+      display: none;
+      animation: fadeUp 1s ease-out forwards;
     }
     .text-editor {
-      top: 60px;
+      top: 220px;
       left: 60px;
     }
     .file-explorer {
-      top: 200px;
+      top: 220px;
       left: 400px;
     }
     .window h3 {
@@ -108,13 +125,45 @@
       text-decoration: none;
       color: #0078d7;
     }
+    .cursor {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: black;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      animation: moveCursor 6s ease-in-out forwards;
+    }
+
+    @keyframes moveCursor {
+      0% { top: 0; left: 0; opacity: 0; }
+      10% { top: 70px; left: 70px; opacity: 1; }
+      20% { top: 70px; left: 70px; }
+      30% { top: 230px; left: 70px; }
+      40% { top: 230px; left: 70px; }
+      50% { top: 230px; left: 410px; }
+      60% { top: 230px; left: 410px; }
+      100% { top: 230px; left: 410px; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* Edition Sections */
     .edition-section {
+      height: 500vh;
       padding: 100px 20px;
       text-align: center;
       background: white;
       border-bottom: 1px solid #eee;
+      animation: fadeUp 1s ease-out;
     }
     .edition-section:nth-child(even) {
       background: #f9f9f9;
@@ -151,11 +200,16 @@
 
   <!-- Hero Section -->
   <div class="hero" id="home">
-    <div class="window text-editor">
+    <div class="shortcut" onclick="openEditor()">📝 Text Editor</div>
+    <div class="shortcut" onclick="openExplorer()">📁 File Explorer</div>
+    <div class="cursor"></div>
+
+    <div class="window text-editor" id="editor">
       <h3>Text Editor</h3>
-      <p>Welcome to Blaze!</p>
+      <p id="editorText"></p>
     </div>
-    <div class="window file-explorer">
+
+    <div class="window file-explorer" id="explorer">
       <h3>File Explorer</h3>
       <ul class="file-list">
         <li><strong>Downloads</strong></li>
@@ -209,18 +263,17 @@
     <p class="description">With PRO+, you get added features on top of PRO, including the Plus Desktop, Advanced PRO management, Device Locking and Built-In Auth. All this and more allows you to control and run business devices deep into the future!</p>
   </section>
 
-  <!-- Download Section -->
   <section class="edition-section" id="download">
     <h2>Download Blaze</h2>
     <p class="description">Blaze is free, so all you have to do is install the Get Blaze app from Axle, then follow the on-screen steps!</p>
   </section>
 
-  <!-- Footer -->
   <footer>
     © 2025 BlazeOS. Modular by design. Built to move.
   </footer>
 
   <script>
+    // Sticky navbar logic
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > window.innerHeight - 100) {
@@ -229,6 +282,26 @@
         navbar.classList.remove('sticky');
       }
     });
+
+    // App launch simulation
+    function openEditor() {
+      const editor = document.getElementById('editor');
+      editor.style.display = 'block';
+      const text = "Welcome to Blaze!";
+      let i = 0;
+      const target = document.getElementById('editorText');
+      target.textContent = "";
+      const typeInterval = setInterval(() => {
+        target.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(typeInterval);
+      }, 100);
+    }
+
+    function openExplorer() {
+      const explorer = document.getElementById('explorer');
+      explorer.style.display = 'block';
+    }
   </script>
 </body>
 </html>
