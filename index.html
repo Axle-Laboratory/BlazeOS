@@ -12,6 +12,34 @@
       color: #111;
       overflow-x: hidden;
     }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      z-index: 1000;
+    }
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .navbar nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .navbar nav a:hover {
+      color: #ff3c78;
+    }
+
     .hero {
       height: 100vh;
       display: flex;
@@ -68,6 +96,7 @@
       background: black;
       color: white;
     }
+
     .editions {
       padding: 80px 20px;
       background: linear-gradient(to bottom, white, #f5f5f5);
@@ -102,6 +131,7 @@
       font-size: 0.9rem;
       color: #666;
     }
+
     footer {
       padding: 40px 20px;
       text-align: center;
@@ -121,7 +151,19 @@
 </head>
 <body>
 
-  <div class="hero">
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">BlazeOS</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#editions">Editions</a>
+      <a href="#download">Download</a>
+      <a href="#docs">Docs</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
     <img src="Blaze26 version logo.png" alt="BlazeOS Logo" />
     <h1>Modular. Visual. Unstoppable.</h1>
     <p>Flame UI Scripting powers the future of device-hosted UX.</p>
@@ -131,6 +173,7 @@
     </div>
   </div>
 
+  <!-- Editions Section -->
   <div class="editions" id="editions">
     <h2>BlazeOS Editions</h2>
     <div class="edition-grid">
@@ -160,6 +203,7 @@
     </p>
   </div>
 
+  <!-- Footer -->
   <footer>
     © 2025 BlazeOS. Built with Flame UI Scripting.
   </footer>
