@@ -7,21 +7,32 @@
       margin: 0;
       font-family: sans-serif;
       color: white;
-      padding: 20px;
+      padding: 0;
       background: url('https://yourdomain.com/background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 
+    #grab-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      cursor: grab;
+      z-index: 1000;
+    }
+
     #mode-indicator {
       font-size: 1.2em;
-      margin-bottom: 10px;
+      margin: 30px 20px 10px;
       color: #00ccff;
     }
 
     #vast-control {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
+      margin: 20px;
     }
 
     .color-pad {
@@ -36,7 +47,7 @@
     }
 
     #timetable {
-      margin-bottom: 20px;
+      margin: 20px;
     }
 
     #taskbar {
@@ -51,6 +62,7 @@
       padding: 0 10px;
       gap: 10px;
       font-size: 0.9em;
+      z-index: 1000;
     }
 
     .taskbar-button {
@@ -67,6 +79,8 @@
   </style>
 </head>
 <body>
+  <div id="grab-bar"></div>
+
   <div id="mode-indicator">☁️ Cloud Mode</div>
 
   <div id="vast-control">
@@ -100,6 +114,11 @@
       pad.addEventListener('click', () => {
         document.body.style.backgroundColor = pad.dataset.color;
       });
+    });
+  </script>
+</body>
+</html>
+
     });
   </script>
 </body>
